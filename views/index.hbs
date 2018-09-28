@@ -1,0 +1,52 @@
+<h1>Hamburger App</h1>
+
+<div class="container">
+	<div id="waiting">
+		<h3>Waiting to be Devoured</h3>
+		<hr>
+		<ul>
+		{{#each burgers}}
+			{{#unless devoured}}
+			<li>{{ burger_name }} &nbsp; &nbsp; <button id={{ id }} class="burgerBtn">Eat Da Burger</button></li>
+			{{/unless}}
+		{{/each}}
+		</ul>
+	</div>
+
+	<div id="devoured">
+		<h3>Devoured</h3>
+		<hr>
+		<ul>
+		{{#each burgers}}
+			{{#if devoured}}
+			<li>{{ burger_name }}</li>
+			{{/if}}
+		{{/each}}
+		</ul>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<form action="/" method="POST">
+		<input name="burgerName" type="text" placeholder="Add A New Burger" required/>
+		<button type="submit" name="addBurger">Submit</button>
+	</form>
+</div>
+
+<script>
+	$(document).on('click', '.burgerBtn', (e) => {
+		const headers = new Headers()
+		headers.append('Content-Type', 'application/json')
+		const opts = {
+			method: 'PUT',
+			headers,
+			body: JSON.stringify({ devoured: true }),
+		}
+		let request = new Request(`/burgers/${e.target.id}`)
+		fetch(request, opts)
+			.then(() => {
+				window.location = '/'
+			})
+			.catch(err => {throw err})	
+	})
+</script>

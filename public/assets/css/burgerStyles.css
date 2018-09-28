@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: url(/assets/img/dark-grey-terrazzo.png) repeat repeat;
+}
+
+ul {
+	list-style: none;
+}
+
+h1 {
+	margin: .75em auto 1.5em auto;
+	text-align: center;
+	color: ghostwhite;
+}
+
+#waiting {
+	padding: 1em 1.5em;
+	width: 48%;
+	float: left;
+	border-radius: 3px;
+	border: 2px solid black;
+	background: darkslategray;
+	color: ghostwhite;
+}
+
+#devoured {
+	padding: 1em 1.5em;
+	width: 48%;
+	float: right;
+	border-radius: 3px;
+	border: 2px solid black;
+	background: darkslategray;
+	color: ghostwhite;
+}
+
+.container {
+	width: 85%;
+	margin: 1em auto;
+}
+
+form {
+	margin-top: 2em;
+}
+
+.clearfix::after {
+	display: block;
+	content: '';
+	clear: both;	
+}
